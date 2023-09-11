@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: whitesmoke;
+    font-family: sans-serif;
+}
+body{
+    background-color: rgba(9, 88, 45, 0.932);
+}
+/*NavBar*/
+.navbarContainer{
+    background-color: rgba(0, 0, 0, 0.897);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav_title{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 15px;
+}
+
+.nav_items a {
+    margin: 15px;
+    position: relative;
+    text-decoration: none;
+}
+
+/*Car*/
+.car{
+    padding: 15px;
+    display: flex;
+}
+
+.car span{
+    padding: 5px;
+}
+
+/*Presentación*/
+
+.containerh1{
+    height: 5500px;
+}
+
+.title_main{
+    height: 500px;
+    padding-top: 200px;
+    background-image: url(/public/portadaVinilo.jpg);
+}
+
+.title_main p{
+    font-size: 18px;
+}
+
+/*Contenedor Novedades*/
+
+.novedades{
+    padding-top: 100px;
+}
+
+.productosNovedades{
+    padding: 25px;
+    /* border: 2px solid black;*/
+}
+
+/*botones ver mas*/
+.vermas{
+    color: black;
+}

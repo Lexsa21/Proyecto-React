@@ -1,3 +1,4 @@
+/*
 *{
     margin: 0;
     padding: 0;
@@ -5,27 +6,28 @@
     color: whitesmoke;
     font-family: sans-serif;
 }
-
+/*NavBar*/
 .navbarContainer{
-    background-color: rgb(165, 97, 42);
+    background-color: rgba(0, 0, 0, 0.897);
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
+/*
 .nav_title{
     font-weight: bold;
     font-size: 20px;
     margin: 15px;
 }
 
-.nav_items a{
+.nav_items a {
     margin: 15px;
     position: relative;
     text-decoration: none;
 }
 
+/*Car*/
 .car{
     padding: 15px;
     display: flex;
@@ -35,9 +37,11 @@
     padding: 5px;
 }
 
+/*Presentación*/
+/*
 .containerh1{
     height: 500px;
-    background-image: url(../assets/cafe.jpg);
+    background-image: url(../assets/portadaVinilo.jpg);
 }
 
 .title_main{
@@ -48,3 +52,4 @@
     font-size: 18px;
 }
 
+*/
