@@ -6,8 +6,14 @@
     font-family: sans-serif;
 }
 body{
-    background-color: rgba(9, 88, 45, 0.932);
+    background-color: #52796f;
+    height: 100%;
 }
+
+a{
+    text-decoration: none;
+}
+
 /*NavBar*/
 .navbarContainer{
     background-color: rgba(0, 0, 0, 0.897);
@@ -19,8 +25,13 @@ body{
 
 .nav_title{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 22px;
     margin: 15px;
+    font-family: lobster;
+}
+
+.nav_title:hover{
+    color: #9fecb0;
 }
 
 .nav_items a {
@@ -42,31 +53,296 @@ body{
 /*Presentación*/
 
 .containerh1{
-    height: 5500px;
+    height: 100%;
 }
 
 .title_main{
     height: 500px;
     padding-top: 200px;
-    background-image: url(/public/portadaVinilo.jpg);
+    background-image: url(/portadaVinilo.jpg);
 }
 
 .title_main p{
-    font-size: 18px;
+    font-size: 20px;
+    padding-left: 180px;
 }
 
-/*Contenedor Novedades*/
+/*Contenedor items*/
 
-.novedades{
+.container {
+    max-width: 1140px;
+    padding-inline: 1.5rem;
+    margin: 0 auto;
+}
+
+.container1 {
+    max-width: 1140px;
+    padding-inline: 1.5rem;
+    margin: 0 auto;
+    background-color: rgba(143, 240, 140, 0.753);
+    margin-top: 200px;
+    border-radius: 10px;
+    box-shadow: black 10px solid;
+}
+
+.main-title{
     padding-top: 100px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-family: lobster;
+    font-size: 35px;
+}
+.main-title2{
+    padding-top: 50px;
+    padding-bottom: 10px;
+    font-family: lobster;
+    font-size: 35px;
 }
 
-.productosNovedades{
-    padding: 25px;
-    /* border: 2px solid black;*/
+.productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-block: 2rem;
 }
 
-/*botones ver mas*/
-.vermas{
+.producto {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.producto > div {
+    padding: 1rem;
+    background-color:#84a98c;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.producto > img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.producto .ver-mas {
+    text-decoration: none;
+    background-color: #cad2c5;
+    color: white;
+    padding: .5rem;
+    width: max-content;
+    border-radius: .5rem;
+    transition: .2s;
+}
+
+.producto .ver-mas:hover {
+    background-color: black;
+    color: white;
+}
+
+/*Contenedor descripciones*/
+.producto-detalle {
+    padding-block: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.titulo{
+    font-family: lobster;
+}
+
+.producto-detalle img {
+    width: 100%;
+}
+
+.producto-detalle h3 {
+    font-size: 2rem;
+}
+
+.precio {
+    font-size: 2rem;
+    margin-top: 2rem;
+    font-weight: 600;
+}
+
+/*botones de cantidad de productos*/
+
+.item-count {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.item-count button, .agregar-al-carrito, .enviar {
+    background-color: #354f52;
+    border: 0;
+    width: 2rem;
+    height: 2rem;
+    color: white;
+    border-radius: .5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+    border: 2px solid var(--clr-main);
+    transition: .2s;
+}
+
+.item-count button:hover, .agregar-al-carrito:hover, .enviar:hover {
+    background-color: white;
     color: black;
+}
+
+.agregar-al-carrito, .enviar {
+    width: auto;
+    height: auto;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+/*Detalle de compra*/
+.vaciar {
+    background-color: #354f52;
+    border: 0;
+    width: 4rem;
+    height: 2rem;
+    color: white;
+    border-radius: .5rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.vaciar:hover{
+    color: red;
+}
+
+.tituloProducto{
+    margin-top: 20px;
+}
+
+.precioTotal{
+    padding-top: 40px;
+    padding-bottom: 5px;
+}
+
+.finCompra{
+    margin-left: 10px;
+    padding: 8px;
+    background-color: #9fecb0;
+    width: 4rem;
+    height: 2rem;
+    border-radius: .5rem;
+    color: aliceblue;
+}
+
+.finCompra:hover{
+    padding: 10px;
+    color: #0f8629;
+    background-color: rgb(187, 215, 240);
+}
+
+/*Formulario*/
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: flex-start;
+}
+
+.formulario input {
+    padding: .5rem;
+    width: 18rem;
+    border-radius: .5rem;
+    border: 2px solid black;
+    color: black;
+}
+
+.formulario input:focus {
+    outline: 0;
+    border: 2px solid rgb(52, 243, 61);
+    outline: 2px solid var(--clr-main);
+}
+
+.numPedido{
+    text-align: center;
+
+    margin-top: 50px;
+}
+
+
+/*Footer*/
+
+footer {
+    background-color: #2f3e46;
+    color: white;
+    width: 100%;
+    margin: auto;
+    font-family: "Saira Extra Condensed", sans-serif;
+}
+
+footer .main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 3rem;
+    margin-top: 15%;
+}
+
+footer h3{
+    padding-bottom: 8px;
+}
+
+footer .main .brand {
+    width: 75%;
+}
+
+footer .main li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+footer .main li a:hover{
+    color: #addab7;
+}
+
+footer .main input[type=text] {
+    padding: 8px 10px;
+    background-color: #141414;
+    color: white;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+footer .main .btn {
+    padding: 9px 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+footer .copyright {
+    color: #84a98c;
+    padding: 1.2rem;
+    text-align: center;
+    font-family: lobster;
+}
+
+/*Fuentes*/
+
+@font-face{
+    font-family: lobster;
+    src: url(/Lobster-Regular.ttf);
+}
+
+.lobster{
+    font-family: lobster;
+    padding-left: 20px;
+    font-size: 40px;
 }

@@ -1,13 +1,16 @@
 import Item from './Item';
 
-/*agregue {products} al parentesis de itemList */ 
 function ItemList({products}) {
 
     return(
-        <div>
-            {products.map((product)=>(
-                <Item key={product.id} product ={product}/>
-            ))}
+
+        <div className="container">
+            <h2 className="main-title">Nuestros Productos</h2>
+            <div className="productos"> 
+                {products.map((product)=>(
+                    <Item key={product.id} product ={product}/>
+                ))}
+            </div>
         </div>
     );
 }

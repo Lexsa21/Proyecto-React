@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Item =({product}) => {
     return (
-        <div className='novedades'>
-            <div className='productosNovedades'>
-                    <img src={product.image} alt="" />
-                    <h3>{product.title}</h3>
-                    <span>{product.price}</span>
-                    <Link className='vermas' to={`/item/${product.id}`}>Ver mas</Link>
+        <div className="producto">
+            <img src={`/${product.imagen}`} alt="" />
+            <div>
+                <h3>{product.titulo}</h3>
+                <span>{product.precio}</span>
+                <Link className= "ver-mas" to={`/item/${product.id}`}>Ver mas</Link>
             </div>
         </div>
     );

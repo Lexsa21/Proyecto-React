@@ -1,31 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import productsJson from '../Productos.jsx'
 import { useParams } from 'react-router-dom';
-import ItemList from './ItemList'
-
-
-function getProducts(){ /*dentro del parentesis tiene que ir cds pa filtrar solo ese producto*//* agregue cds*/
-/*
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            if (cds!== undefined) {
-                const productosFiltrados = productsJson.filter(
-                    (item)=> item.category == cds
-                );
-                resolve(productosFiltrados)
-            }else{
-                resolve(productsJson);
-            }
-        },2000);
-    });
-    */
-
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve(productsJson);
-        },1000);
-    });
-}
+import ItemList from './ItemList';
+import {collection, getDocs, query, where} from "firebase/firestore";
+import {db} from "../firebase/config";
 
 
 function ItemListContainer({greeting})  {
@@ -34,21 +11,25 @@ function ItemListContainer({greeting})  {
     const category = useParams().category; 
 
     useEffect(()=>{
-        getProducts()
-            .then((data)=>{
-                if (category){
-                    setProducts(data.filter((prod)=>prod.category === category))
-                } else{
-                    setProducts(data);
-                }
+        const productosRef = collection(db, "productos");
+
+        const q = category ? query(productosRef, where("categoria","==", category)): productosRef;
+
+        getDocs(q)
+            .then((resp)=>{
+                setProducts(
+                    resp.docs.map((doc)=>{
+                        return {...doc.data(), id: doc.id}
+                    })
+                )
             })
     },[category]); 
 
     return (
         <div className='containerh1'>
             <div className='title_main'>
-                <h1>{greeting}</h1>
-                <p>{greeting}</p>
+                <h1 className='lobster'>Lexsa Vinils - Disqueria especializada en Vinilos</h1>
+                <p>Todo para los amantes de la musica</p>
             </div>
             <div>
                 <ItemList products= {products} />
@@ -57,8 +38,4 @@ function ItemListContainer({greeting})  {
     )
 }
 
-
 export default ItemListContainer
-
-/*<ItemList products= {products} />*/
-/*<ItemList/>*/

@@ -1,13 +1,13 @@
-import React from 'react'
-
-function ItemCount() {
-
-    const[count,setCount] = useState(0)
+function ItemCount({count,handleRestar,handleSumar,handleAgregar}) {
 
     return (
         <div>
-            <p>{count}</p>
-            <button onClick={()=>{setCount(count+1)} }>Sumar Contador</button>
+            <div className="item-count">
+                <button onClick={handleRestar}>-</button>
+                <p>{count}</p>
+                <button onClick={handleSumar}>+</button>
+            </div>
+            <button className="agregar-al-carrito" onClick={handleAgregar}>Agregar al carrito</button>
         </div>
     )
 }
