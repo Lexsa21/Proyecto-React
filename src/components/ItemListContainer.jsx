@@ -1,41 +1,54 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
-import {collection, getDocs, query, where} from "firebase/firestore";
-import {db} from "../firebase/config";
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
+function ItemListContainer() {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
-function ItemListContainer({greeting})  {
+    const { category } = useParams();
 
-    const [products,setProducts] = useState([])
-    const category = useParams().category; 
+    useEffect(() => {
+        setLoading(true);
+        setError('');
 
-    useEffect(()=>{
-        const productosRef = collection(db, "productos");
-
-        const q = category ? query(productosRef, where("categoria","==", category)): productosRef;
+        const productosRef = collection(db, 'productos');
+        const q = category
+            ? query(productosRef, where('categoria', '==', category))
+            : productosRef;
 
         getDocs(q)
-            .then((resp)=>{
+            .then((resp) => {
                 setProducts(
-                    resp.docs.map((doc)=>{
-                        return {...doc.data(), id: doc.id}
-                    })
-                )
+                    resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+                );
             })
-    },[category]); 
+            .catch(() => setError('No se pudieron cargar los productos. Intentá más tarde.'))
+            .finally(() => setLoading(false));
+    }, [category]);
 
     return (
         <div className='containerh1'>
             <div className='title_main'>
-                <h1 className='lobster'>Lexsa Vinils - Disqueria especializada en Vinilos</h1>
-                <p>Todo para los amantes de la musica</p>
+                <h1 className='lobster'>Lexsa Vinils - Disquería especializada en Vinilos</h1>
+                <p>Todo para los amantes de la música</p>
             </div>
-            <div>
-                <ItemList products= {products} />
-            </div>
+
+            {loading && (
+                <div className='loading'>
+                    <div className='spinner'></div>
+                    <p>Cargando productos...</p>
+                </div>
+            )}
+
+            {error && <p className='error-msg center'>{error}</p>}
+
+            {!loading && !error && <ItemList products={products} />}
         </div>
-    )
+    );
 }
 
-export default ItemListContainer
+export default ItemListContainer;

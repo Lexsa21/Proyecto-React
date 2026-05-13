@@ -1,44 +1,42 @@
-import React, { createContext, useState } from 'react'
+import { createContext, useState } from 'react'
 
 export const CartContext = createContext();
 
-export const CartProvider = ({children} ) =>{
-    const [car, setCar] = useState([])
+export const CartProvider = ({ children }) => {
+    const [cart, setCart] = useState([])
 
+    const agregarAlCart = (item, count) => {
+        const itemAgregado = { ...item, count };
+        const nuevoCart = [...cart];
+        const estaEnElCart = nuevoCart.find((producto) => producto.id === itemAgregado.id);
 
-    const agregarAlCar = (item,count)=>{
-        const itemAgregado = {...item,count};
-
-        const nuevoCar = [...car];
-        const estaEnElCar = nuevoCar.find((producto)=> producto.id === itemAgregado.id);
-
-        if (estaEnElCar){
-            estaEnElCar.count += count;
-        } else{
-            nuevoCar.push(itemAgregado);
+        if (estaEnElCart) {
+            estaEnElCart.count += count;
+        } else {
+            nuevoCart.push(itemAgregado);
         }
-        setCar(nuevoCar)
+        setCart(nuevoCart);
     }
 
-    const cantidadEnCar = ()=>{
-        return car.reduce((acc,prod)=> acc+ prod.count, 0)
+    const cantidadEnCart = () => {
+        return cart.reduce((acc, prod) => acc + prod.count, 0);
     }
 
-    const precioTotal = ()=>{
-        return car.reduce((acc,prod)=> acc+ prod.precio * prod.count,0)
+    const precioTotal = () => {
+        return cart.reduce((acc, prod) => acc + prod.precio * prod.count, 0);
     }
 
-    const vaciarCar = ()=>{
-        setCar([]);
+    const vaciarCart = () => {
+        setCart([]);
     }
 
-    const vaciarItem = (itemId) =>{
-        const remove = car.filter((item)=> item.id !== itemId);
-        setCar(remove)
+    const vaciarItem = (itemId) => {
+        const remove = cart.filter((item) => item.id !== itemId);
+        setCart(remove);
     }
 
     return (
-        <CartContext.Provider value={{car, agregarAlCar, cantidadEnCar,precioTotal,vaciarCar, vaciarItem}}>
+        <CartContext.Provider value={{ cart, agregarAlCart, cantidadEnCart, precioTotal, vaciarCart, vaciarItem }}>
             {children}
         </CartContext.Provider>
     )
