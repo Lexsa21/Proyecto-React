@@ -28,8 +28,8 @@ E-commerce de disquería especializada en vinilos, CDs y equipos de audio. Proye
 
 1. Clonar el repositorio:
 ```bash
-git clone https://github.com/tu-usuario/lexsa-vinils.git
-cd lexsa-vinils
+git clone https://github.com/Lexsa21/Proyecto-React.git
+cd Proyecto-React
 ```
 
 2. Instalar dependencias:
